@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Better Simple Browser</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    #url-container {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      width: 60%;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #007BFF;
+      border-radius: 4px;
+      outline: none;
+      margin-right: 10px;
+    }
+
+    input:focus {
+      border-color: #0056b3;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    iframe {
+      width: 100%;
+      height: 70vh;
+      border: none;
+      margin-top: 20px;
+      display: none; /* Initially hidden */
+    }
+
+    #loading {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+      display: none; /* Initially hidden */
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+      display: none; /* Initially hidden */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Better Browser</h1>
+  
+  <div id="url-container">
+    <input type="text" id="url-input" placeholder="Enter URL" onkeydown="checkEnter(event)">
+    <button onclick="openWebsite()">Go</button>
+  </div>
+  
+  <div id="loading">Loading...</div>
+  <div class="error" id="error-message">Failed to load the website. Please check the URL.</div>
+
+  <iframe id="browser-frame" src="about:blank"></iframe>
+
+  <script>
+    function openWebsite() {
+      const url = document.getElementById('url-input').value.trim();
+
+      if (isValidUrl(url)) {
+        // Show loading and hide error
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+        
+        // Add http:// if the user didn't include it
+        const formattedUrl = (url.startsWith('http://') || url.startsWith('https://')) ? url : 'http://' + url;
+
+        // Set iframe source and show iframe
+        const iframe = document.getElementById('browser-frame');
+        iframe.style.display = 'block';
+        iframe.src = formattedUrl;
+        
+        // Hide loading after a short delay (simulate real loading time)
+        setTimeout(() => {
+          document.getElementById('loading').style.display = 'none';
+        }, 1500);
+      } else {
+        // Show error message if the URL is invalid
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('loading').style.display = 'none';
+      }
+    }
+
+    function checkEnter(event) {
+      if (event.key === 'Enter') {
+        openWebsite();
+      }
+    }
+
+    function isValidUrl(url) {
+      // Regular expression to check if the URL looks valid
+      const regex = /^(https?:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,})(\/[^\s]*)?$/;
+      return regex.test(url);
+    }
+  </script>
+
+</body>
+</html>
