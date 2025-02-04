@@ -10,11 +10,18 @@
     <div id="chrome">
         <div class="header">
             <div class="tabs">
-                <div class="tab active" onclick="openTab(event, 'tab1')">Tab 1</div>
-                <div class="tab" onclick="openTab(event, 'tab2')">Tab 2</div>
-                <div class="tab" onclick="openTab(event, 'tab3')">Tab 3</div>
+                <div class="tab active" onclick="openTab(event, 'tab1')">
+                    <span class="tab-title">Tab 1</span>
+                    <button class="close-tab" onclick="closeTab(event, 'tab1')">x</button>
+                </div>
+                <div class="tab" onclick="openTab(event, 'tab2')">
+                    <span class="tab-title">Tab 2</span>
+                    <button class="close-tab" onclick="closeTab(event, 'tab2')">x</button>
+                </div>
             </div>
             <input id="search-bar" type="text" placeholder="Search..." onkeydown="handleSearch(event)">
+            <button id="search-button" onclick="search()">Search</button>
+            <button id="new-tab-button" onclick="addNewTab()">+ New Tab</button>
         </div>
         <div class="content">
             <div id="tab1" class="tab-content active">
@@ -22,9 +29,6 @@
             </div>
             <div id="tab2" class="tab-content">
                 <iframe id="tab2-iframe" src="about:blank" width="100%" height="500px"></iframe>
-            </div>
-            <div id="tab3" class="tab-content">
-                <iframe id="tab3-iframe" src="about:blank" width="100%" height="500px"></iframe>
             </div>
         </div>
     </div>
