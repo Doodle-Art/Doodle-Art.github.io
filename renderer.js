@@ -1,12 +1,13 @@
 let history = [];
 let currentIndex = -1;
 
-function loadPage() {
+async function loadPage() {
     let url = document.getElementById('url').value;
     if (!url.startsWith('http')) {
         url = 'https://' + url;
     }
 
+    // Add URL to history and update navigation
     history.push(url);
     currentIndex = history.length - 1;
     updateNavigationButtons();
@@ -15,10 +16,14 @@ function loadPage() {
 }
 
 async function fetchPage(url) {
+    // Use a proxy to bypass CORS restrictions
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+
     try {
-        const response = await fetch(url, { mode: 'no-cors' });
-        const text = await response.text();
-        document.getElementById('output').innerText = text;
+        document.getElementById('output').innerHTML = "<p>Loading...</p>";
+        const response = await fetch(proxyUrl);
+        const data = await response.json();
+        document.getElementById('output').innerHTML = data.contents;
     } catch (error) {
         document.getElementById('output').innerText = 'Error loading page: ' + error.message;
     }
@@ -46,9 +51,3 @@ function updateNavigationButtons() {
     document.querySelector("button:nth-child(1)").disabled = currentIndex <= 0;
     document.querySelector("button:nth-child(2)").disabled = currentIndex >= history.length - 1;
 }
-
-
-// Update address bar when page is loaded or navigated
-iframe.onload = function () {
-  urlInput.value = iframe.src;
-};
