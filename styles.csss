@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f0f0f0;
+    margin: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+.dark-mode {
+    background: #1e1e1e;
+    color: white;
+}
+.browser-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+input, select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+button {
+    padding: 8px 12px;
+    border: none;
+    background: blue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background: darkblue;
+}
+#output {
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: white;
+    min-height: 300px;
+    text-align: left;
+    overflow: auto;
+}
+.dark-mode #output {
+    background: #333;
+    border-color: #555;
+}
+#tabs {
+    margin: 10px 0;
+}
+.tab {
+    display: inline-block;
+    padding: 5px 10px;
+    background: lightgray;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.active-tab {
+    background: gray;
+    color: white;
+}
+
+
