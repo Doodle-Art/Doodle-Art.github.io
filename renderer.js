@@ -36,4 +36,3 @@ function goForward() {
 iframe.onload = function () {
   urlInput.value = iframe.src;
 };
-
