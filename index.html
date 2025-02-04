@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome Simulation</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Simple Browser</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="chrome">
-        <div class="header">
-            <div class="tabs">
-                <div class="tab active" onclick="openTab(event, 'tab1')">
-                    <span class="tab-title">Tab 1</span>
-                    <button class="close-tab" onclick="closeTab(event, 'tab1')">x</button>
-                </div>
-                <div class="tab" onclick="openTab(event, 'tab2')">
-                    <span class="tab-title">Tab 2</span>
-                    <button class="close-tab" onclick="closeTab(event, 'tab2')">x</button>
-                </div>
-            </div>
-            <input id="search-bar" type="text" placeholder="Search..." onkeydown="handleSearch(event)">
-            <button id="search-button" onclick="search()">Search</button>
-            <button id="new-tab-button" onclick="addNewTab()">+ New Tab</button>
-        </div>
-        <div class="content">
-            <div id="tab1" class="tab-content active">
-                <iframe id="tab1-iframe" src="about:blank" width="100%" height="500px"></iframe>
-            </div>
-            <div id="tab2" class="tab-content">
-                <iframe id="tab2-iframe" src="about:blank" width="100%" height="500px"></iframe>
-            </div>
-        </div>
+  <div class="browser-container">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <button onclick="goBack()">Back</button>
+      <button onclick="goForward()">Forward</button>
+      <button onclick="reloadPage()">Reload</button>
+      <input type="text" id="url-input" placeholder="Enter URL" oninput="updateURL()" />
+      <button onclick="loadURL()">Go</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Iframe for rendering the webpage -->
+    <iframe id="browser-frame" src="https://www.example.com" width="100%" height="80%" style="border:none;"></iframe>
+  </div>
+
+  <script src="renderer.js"></script>
 </body>
 </html>
