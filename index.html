@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced Simple Browser</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Web Browser</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="browser-container">
-    <!-- Navigation Bar -->
-    <div class="navbar">
-      <button onclick="goBack()">Back</button>
-      <button onclick="goForward()">Forward</button>
-      <button onclick="reloadPage()">Reload</button>
-      <input type="text" id="url-input" placeholder="Enter URL" oninput="updateURL()" />
-      <button onclick="loadURL()">Go</button>
+    <div class="browser-container">
+        <button onclick="goBack()">⬅️</button>
+        <button onclick="goForward()">➡️</button>
+        <input type="text" id="url" placeholder="Enter URL (e.g. https://example.com)">
+        <button onclick="loadPage()">Go</button>
     </div>
+    <div id="output">Webpage content will appear here...</div>
 
-    <!-- Iframe for rendering the webpage -->
-    <iframe id="browser-frame" src="https://www.example.com" width="100%" height="100%" style="border:none;"></iframe>
-  </div>
-
-  <script src="renderer.js"></script>
+    <script src="renderer.js"></script>
 </body>
 </html>
+
