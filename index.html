@@ -7,15 +7,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button id="toggle-theme">🌙 Dark Mode</button>
+    
     <div class="browser-container">
         <button onclick="goBack()">⬅️</button>
         <button onclick="goForward()">➡️</button>
-        <input type="text" id="url" placeholder="Enter URL (e.g. https://example.com)">
+        <input type="text" id="url" placeholder="Enter URL or search...">
+        <select id="search-engine">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option value="https://www.duckduckgo.com/?q=">DuckDuckGo</option>
+            <option value="https://www.bing.com/search?q=">Bing</option>
+        </select>
         <button onclick="loadPage()">Go</button>
+        <button onclick="bookmarkPage()">⭐</button>
     </div>
+
+    <div id="tabs">
+        <button onclick="newTab()">➕ New Tab</button>
+    </div>
+
     <div id="output">Webpage content will appear here...</div>
+
+    <h3>Bookmarks:</h3>
+    <ul id="bookmarks"></ul>
 
     <script src="renderer.js"></script>
 </body>
 </html>
-
