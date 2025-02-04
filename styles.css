@@ -32,6 +32,10 @@ button {
 button:hover {
     background: darkblue;
 }
+button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
 #output {
     margin-top: 10px;
     padding: 15px;
@@ -57,6 +61,10 @@ button:hover {
     margin-right: 5px;
 }
 .active-tab {
+    background: gray;
+    color: white;
+}
+
     background: gray;
     color: white;
 }
