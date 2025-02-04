@@ -1,148 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chrome-like Browser</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #fafafa;
-      color: #333;
-    }
-
-    h1 {
-      margin-top: 20px;
-      font-size: 2rem;
-      color: #333;
-      text-align: center;
-    }
-
-    #url-container {
-      display: flex;
-      margin-top: 50px;
-      align-items: center;
-      justify-content: center;
-      width: 80%;
-      max-width: 600px;
-    }
-
-    input {
-      width: 90%;
-      padding: 12px;
-      font-size: 18px;
-      border: 2px solid #007BFF;
-      border-radius: 4px;
-      outline: none;
-      margin-right: 10px;
-      background-color: white;
-    }
-
-    input:focus {
-      border-color: #0056b3;
-    }
-
-    button {
-      padding: 12px 20px;
-      font-size: 18px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    iframe {
-      width: 100%;
-      height: 70vh;
-      border: none;
-      margin-top: 20px;
-      display: none;
-    }
-
-    #loading {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #333;
-      display: none;
-    }
-
-    .error {
-      color: red;
-      font-weight: bold;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Simulation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="chrome">
+        <div class="header">
+            <div class="tabs">
+                <div class="tab active" onclick="openTab(event, 'tab1')">Tab 1</div>
+                <div class="tab" onclick="openTab(event, 'tab2')">Tab 2</div>
+                <div class="tab" onclick="openTab(event, 'tab3')">Tab 3</div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="tab1" class="tab-content active">
+                <h2>Tab 1 Content</h2>
+                <p>This is the content of Tab 1.</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <h2>Tab 2 Content</h2>
+                <p>This is the content of Tab 2.</p>
+            </div>
+            <div id="tab3" class="tab-content">
+                <h2>Tab 3 Content</h2>
+                <p>This is the content of Tab 3.</p>
+            </div>
+        </div>
+    </div>
 
-  <h1>Chrome-like Browser</h1>
-  
-  <div id="url-container">
-    <input type="text" id="url-input" placeholder="Search or enter a URL" onkeydown="checkEnter(event)">
-    <button onclick="openWebsite()">Go</button>
-  </div>
-
-  <div id="loading">Loading...</div>
-  <div class="error" id="error-message">Failed to load the website. Please check the URL.</div>
-
-  <iframe id="browser-frame" src="about:blank"></iframe>
-
-  <script>
-    function openWebsite() {
-      const url = document.getElementById('url-input').value.trim();
-
-      // Check if input is a URL or search term
-      if (isValidUrl(url)) {
-        // URL entered
-        loadWebsite(url);
-      } else {
-        // Treat it as a search term
-        const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(url);
-        loadWebsite(searchUrl);
-      }
-    }
-
-    function loadWebsite(url) {
-      // Show loading and hide error
-      document.getElementById('loading').style.display = 'block';
-      document.getElementById('error-message').style.display = 'none';
-
-      // Add http:// if the user didn't include it
-      const formattedUrl = (url.startsWith('http://') || url.startsWith('https://')) ? url : 'http://' + url;
-
-      const iframe = document.getElementById('browser-frame');
-      iframe.style.display = 'block';
-      iframe.src = formattedUrl;
-
-      // Hide loading after a short delay (simulate real loading time)
-      setTimeout(() => {
-        document.getElementById('loading').style.display = 'none';
-      }, 1500);
-    }
-
-    function checkEnter(event) {
-      if (event.key === 'Enter') {
-        openWebsite();
-      }
-    }
-
-    function isValidUrl(url) {
-      // Regular expression to check if the URL looks valid
-      const regex = /^(https?:\/\/)?([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,})(\/[^\s]*)?$/;
-      return regex.test(url);
-    }
-  </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
