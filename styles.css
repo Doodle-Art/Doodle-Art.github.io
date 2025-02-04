@@ -20,10 +20,13 @@ body {
     background-color: #f1f1f1;
     padding: 10px;
     border-bottom: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
 }
 
 .tabs {
     display: flex;
+    margin-bottom: 10px;
 }
 
 .tab {
@@ -44,6 +47,15 @@ body {
     color: white;
 }
 
+#search-bar {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
 .content {
     padding: 20px;
 }
@@ -54,4 +66,9 @@ body {
 
 .tab-content.active {
     display: block;
+}
+
+iframe {
+    border: none;
+    border-radius: 5px;
 }
