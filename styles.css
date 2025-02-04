@@ -15,40 +15,61 @@ body {
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #333;
-  padding: 10px;
+  padding: 20px;
   color: white;
+  box-sizing: border-box;
 }
 
 .navbar button {
-  padding: 10px;
-  margin-right: 5px;
+  padding: 15px 30px;
+  margin-right: 10px;
   background-color: #444;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 18px;
 }
 
-.navbar input {
-  padding: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 40%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-iframe {
-  flex-grow: 1;
-  width: 100%;
-  height: calc(100% - 60px); /* Adjust based on navbar height */
-}
-
-.navbar button:hover, .navbar input:hover {
+.navbar button:hover {
   background-color: #555;
 }
 
 .navbar button:active {
   background-color: #222;
+}
+
+.navbar input {
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60%;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+iframe {
+  flex-grow: 1;
+  width: 100%;
+  height: calc(100% - 120px); /* Adjusted height based on navbar size */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar input {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .navbar button {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
